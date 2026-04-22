@@ -1,0 +1,7 @@
+# Unneccesary to track
+*.app
+.alpackages/
+.altemplates/
+.alcache/
+.altestrunner/
+.vscode/
