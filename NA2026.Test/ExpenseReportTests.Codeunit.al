@@ -18,7 +18,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     // ---------------------------------------------------------------
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler')]
     procedure SubmitWithNoLines_Errors()
     var
         Header: Record "BSEX Expense Report Header";
@@ -38,7 +37,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     end;
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler')]
     procedure SubmitWithZeroAmount_Errors()
     var
         Header: Record "BSEX Expense Report Header";
@@ -59,7 +57,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     end;
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler')]
     procedure Submit_StampsSubmittedByAndOn()
     var
         Header: Record "BSEX Expense Report Header";
@@ -88,7 +85,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     end;
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler')]
     procedure ApproveWhileDraft_Errors()
     var
         Header: Record "BSEX Expense Report Header";
@@ -113,7 +109,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     // ---------------------------------------------------------------
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler,PostMessageHandler')]
     procedure Posting_CreatesOneLedgerEntryPerLine_AmountsMatch()
     var
         Header: Record "BSEX Expense Report Header";
@@ -164,7 +159,6 @@ codeunit 77600 "BSEX Expense Report Tests"
     // ---------------------------------------------------------------
 
     [Test]
-    [HandlerFunctions('ConfirmYesHandler')]
     procedure LinesAreLockedAfterSubmit()
     var
         Header: Record "BSEX Expense Report Header";
@@ -199,6 +193,7 @@ codeunit 77600 "BSEX Expense Report Tests"
             exit;
         EnsureNoSeries();
         EnsureSetup();
+        Commit();
         IsInitialized := true;
     end;
 

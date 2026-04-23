@@ -4,7 +4,10 @@
       "path": ".AL-Go"
     },
     {
-      "path": "directions-na-2026"
+      "path": "NA2026"
+    },
+    {
+      "path": "NA2026.Test"
     }
   ],
   "settings": {}

@@ -32,8 +32,9 @@ codeunit 77500 "BSEX Expense Report Mgt"
         if Header."Total Amount" <= 0 then
             Error(ZeroAmountErr, Header.TableCaption(), Header."No.");
 
-        if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(SubmitConfirmQst, Header."No."), true) then
-            exit;
+        if GuiAllowed() then
+            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(SubmitConfirmQst, Header."No."), true) then
+                exit;
 
         Header.Status := Header.Status::Submitted;
         Header."Submitted By" := CopyStr(UserId(), 1, MaxStrLen(Header."Submitted By"));
@@ -48,8 +49,9 @@ codeunit 77500 "BSEX Expense Report Mgt"
         if Header.Status <> Header.Status::Submitted then
             Error(WrongStatusErr, Format(Header.Status::Submitted), Format(Header.Status));
 
-        if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ApproveConfirmQst, Header."No."), true) then
-            exit;
+        if GuiAllowed() then
+            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ApproveConfirmQst, Header."No."), true) then
+                exit;
 
         Header.Status := Header.Status::Approved;
         Header."Approved By" := CopyStr(UserId(), 1, MaxStrLen(Header."Approved By"));
@@ -66,8 +68,9 @@ codeunit 77500 "BSEX Expense Report Mgt"
         if Header.Status = Header.Status::Posted then
             Error(WrongStatusErr, 'Submitted or Approved', Format(Header.Status));
 
-        if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ReopenConfirmQst, Header."No."), true) then
-            exit;
+        if GuiAllowed() then
+            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ReopenConfirmQst, Header."No."), true) then
+                exit;
 
         Header.Status := Header.Status::Draft;
         Header."Submitted By" := '';
