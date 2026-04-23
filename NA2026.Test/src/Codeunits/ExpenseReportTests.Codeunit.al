@@ -57,6 +57,7 @@ codeunit 77600 "BSEX Expense Report Tests"
     end;
 
     [Test]
+    [HandlerFunctions('ConfirmYesHandler')]
     procedure Submit_StampsSubmittedByAndOn()
     var
         Header: Record "BSEX Expense Report Header";
@@ -109,6 +110,7 @@ codeunit 77600 "BSEX Expense Report Tests"
     // ---------------------------------------------------------------
 
     [Test]
+    [HandlerFunctions('ConfirmYesHandler,PostMessageHandler')]
     procedure Posting_CreatesOneLedgerEntryPerLine_AmountsMatch()
     var
         Header: Record "BSEX Expense Report Header";
@@ -159,6 +161,7 @@ codeunit 77600 "BSEX Expense Report Tests"
     // ---------------------------------------------------------------
 
     [Test]
+    [HandlerFunctions('ConfirmYesHandler')]
     procedure LinesAreLockedAfterSubmit()
     var
         Header: Record "BSEX Expense Report Header";

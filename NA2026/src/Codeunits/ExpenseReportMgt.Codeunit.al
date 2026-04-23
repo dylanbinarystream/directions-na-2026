@@ -1,7 +1,5 @@
 namespace BinaryStream.ExpenseReportManager;
 
-using System.Utilities;
-
 codeunit 77500 "BSEX Expense Report Mgt"
 {
     var
@@ -15,7 +13,6 @@ codeunit 77500 "BSEX Expense Report Mgt"
     procedure Submit(var Header: Record "BSEX Expense Report Header")
     var
         Line: Record "BSEX Expense Report Line";
-        ConfirmMgt: Codeunit "Confirm Management";
     begin
         if Header.Status <> Header.Status::Draft then
             Error(WrongStatusErr, Format(Header.Status::Draft), Format(Header.Status));
@@ -32,9 +29,8 @@ codeunit 77500 "BSEX Expense Report Mgt"
         if Header."Total Amount" <= 0 then
             Error(ZeroAmountErr, Header.TableCaption(), Header."No.");
 
-        if GuiAllowed() then
-            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(SubmitConfirmQst, Header."No."), true) then
-                exit;
+        if not Confirm(StrSubstNo(SubmitConfirmQst, Header."No."), true) then
+            exit;
 
         Header.Status := Header.Status::Submitted;
         Header."Submitted By" := CopyStr(UserId(), 1, MaxStrLen(Header."Submitted By"));
@@ -43,15 +39,12 @@ codeunit 77500 "BSEX Expense Report Mgt"
     end;
 
     procedure Approve(var Header: Record "BSEX Expense Report Header")
-    var
-        ConfirmMgt: Codeunit "Confirm Management";
     begin
         if Header.Status <> Header.Status::Submitted then
             Error(WrongStatusErr, Format(Header.Status::Submitted), Format(Header.Status));
 
-        if GuiAllowed() then
-            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ApproveConfirmQst, Header."No."), true) then
-                exit;
+        if not Confirm(StrSubstNo(ApproveConfirmQst, Header."No."), true) then
+            exit;
 
         Header.Status := Header.Status::Approved;
         Header."Approved By" := CopyStr(UserId(), 1, MaxStrLen(Header."Approved By"));
@@ -60,17 +53,14 @@ codeunit 77500 "BSEX Expense Report Mgt"
     end;
 
     procedure Reopen(var Header: Record "BSEX Expense Report Header")
-    var
-        ConfirmMgt: Codeunit "Confirm Management";
     begin
         if Header.Status = Header.Status::Draft then
             exit;
         if Header.Status = Header.Status::Posted then
             Error(WrongStatusErr, 'Submitted or Approved', Format(Header.Status));
 
-        if GuiAllowed() then
-            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(ReopenConfirmQst, Header."No."), true) then
-                exit;
+        if not Confirm(StrSubstNo(ReopenConfirmQst, Header."No."), true) then
+            exit;
 
         Header.Status := Header.Status::Draft;
         Header."Submitted By" := '';

@@ -1,7 +1,5 @@
 namespace BinaryStream.ExpenseReportManager;
 
-using System.Utilities;
-
 codeunit 77501 "BSEX Expense Post"
 {
     TableNo = "BSEX Expense Report Header";
@@ -20,15 +18,13 @@ codeunit 77501 "BSEX Expense Post"
     var
         Line: Record "BSEX Expense Report Line";
         Ledger: Record "BSEX Expense Ledger Entry";
-        ConfirmMgt: Codeunit "Confirm Management";
         EntryCount: Integer;
     begin
         if Header.Status <> Header.Status::Approved then
             Error(WrongStatusErr, Format(Header.Status));
 
-        if GuiAllowed() then
-            if not ConfirmMgt.GetResponseOrDefault(StrSubstNo(PostConfirmQst, Header."No."), true) then
-                exit;
+        if not Confirm(StrSubstNo(PostConfirmQst, Header."No."), true) then
+            exit;
 
         Line.SetRange("Document No.", Header."No.");
         Line.LockTable();
@@ -58,7 +54,6 @@ codeunit 77501 "BSEX Expense Post"
         Header."Posted On" := CurrentDateTime();
         Header.Modify(true);
 
-        if GuiAllowed() then
-            Message(PostedMsg, Header."No.", EntryCount);
+        Message(PostedMsg, Header."No.", EntryCount);
     end;
 }
