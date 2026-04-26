@@ -26,6 +26,8 @@ codeunit 77501 "BSEX Expense Post"
         if not Confirm(StrSubstNo(PostConfirmQst, Header."No."), true) then
             exit;
 
+        ThrowExceptionIfDebugBugEnabled();
+
         Line.SetRange("Document No.", Header."No.");
         Line.LockTable();
         if Line.FindSet() then
@@ -55,5 +57,17 @@ codeunit 77501 "BSEX Expense Post"
         Header.Modify(true);
 
         Message(PostedMsg, Header."No.", EntryCount);
+    end;
+
+    local procedure ThrowExceptionIfDebugBugEnabled()
+    var
+        Setup: Record "BSEX Expense Report Setup";
+        Zero: Integer;
+        Dummy: Integer;
+    begin
+        if not (Setup.Get() and Setup."Debug Bug Post Exception") then
+            exit;
+        Zero := 0;
+        Dummy := 1 div Zero;
     end;
 }

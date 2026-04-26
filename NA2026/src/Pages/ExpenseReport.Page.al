@@ -115,7 +115,7 @@ page 77502 "BSEX Expense Report"
                 ApplicationArea = All;
                 Caption = 'Post';
                 Image = PostDocument;
-                Enabled = Rec.Status = Rec.Status::Approved;
+                Enabled = PostEnabled;
                 trigger OnAction()
                 var
                     Post: Codeunit "BSEX Expense Post";
@@ -157,9 +157,22 @@ page 77502 "BSEX Expense Report"
 
     var
         ReopenEnabled: Boolean;
+        PostEnabled: Boolean;
 
     trigger OnAfterGetCurrRecord()
     begin
         ReopenEnabled := Rec.Status in [Rec.Status::Submitted, Rec.Status::Approved];
+        PostEnabled := CalcPostEnabled();
+    end;
+
+    local procedure CalcPostEnabled(): Boolean
+    var
+        Setup: Record "BSEX Expense Report Setup";
+    begin
+        if Rec.Status <> Rec.Status::Approved then
+            exit(false);
+        if Setup.Get() and Setup."Debug Bug Post Btn Disabled" then
+            exit(false);
+        exit(true);
     end;
 }

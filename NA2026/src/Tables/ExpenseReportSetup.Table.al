@@ -23,6 +23,14 @@ table 77503 "BSEX Expense Report Setup"
             Caption = 'Posted Entry Auto-Increment';
             InitValue = true;
         }
+        field(100; "Debug Bug Post Exception"; Boolean)
+        {
+            Caption = 'Debug: Throw Exception On Post';
+        }
+        field(101; "Debug Bug Post Btn Disabled"; Boolean)
+        {
+            Caption = 'Debug: Post Button Stays Disabled';
+        }
     }
 
     keys

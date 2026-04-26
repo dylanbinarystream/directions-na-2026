@@ -20,6 +20,7 @@ permissionset 77550 "BSEX-EXP-EDIT"
         page "BSEX Expense Report Subform" = X,
         page "BSEX Expense Ledger Entries" = X,
         page "BSEX Expense Report Setup" = X,
+        page "BSEX Expense Report Debug" = X,
         codeunit "BSEX Expense Report Mgt" = X,
         codeunit "BSEX Expense Post" = X,
         report "BSEX Expense Summary" = X;
