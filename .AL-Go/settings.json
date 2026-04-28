@@ -3,5 +3,6 @@
   "country": "us",
   "appFolders": ["NA2026"],
   "testFolders": ["NA2026.Test"],
-  "pageScriptingTests": ["recordings"]
+  "pageScriptingTests": ["recordings"],
+  "restoreDatabases": ["BeforeEachPageScriptingTest"]
 }

@@ -1,0 +1,249 @@
+name: Recording
+description: Test recording
+telemetryId: 8bfc2c9e-45f1-4128-ac30-dc3b38542378
+start:
+  profile: BUSINESS MANAGER
+steps:
+  - type: navigate
+    target:
+      - page: No. Series
+    description: Navigate to No. Series
+  - type: invoke
+    target:
+      - page: No. Series
+        runtimeRef: bhn
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>New</caption>
+  - type: input
+    target:
+      - page: No. Series
+        runtimeRef: bhn
+      - repeater: Control1
+      - field: Code
+    value: EXP
+    description: Input <value>EXP</value> into <caption>Code</caption>
+  - type: input
+    target:
+      - page: No. Series
+        runtimeRef: bhn
+      - repeater: Control1
+      - field: Description
+    value: Expense Reports
+    description: Input <value>Expense Reports</value> into <caption>Description</caption>
+  - type: invoke
+    target:
+      - page: No. Series
+        runtimeRef: bhn
+      - repeater: Control1
+      - field: StartNo
+    invokeType: DrillDown
+    description: Invoke DrillDown on <caption>Starting No.</caption>
+  - type: input
+    target:
+      - page: No. Series Lines
+        runtimeRef: blz
+      - repeater: Control1
+      - field: Starting No.
+    value: EXP000001
+    description: Input <value>EXP000001</value> into <caption>Starting No.</caption>
+  - type: invoke
+    target:
+      - page: No. Series Lines
+        runtimeRef: blz
+    invokeType: Cancel
+    description: Invoke Cancel on <caption>No. Series Lines</caption>
+  - type: close-page
+    target:
+      - page: No. Series
+        runtimeRef: bhn
+    description: Close page <caption>New - No. Series</caption>
+  - type: navigate
+    target:
+      - page: BSEX Expense Report Setup
+    description: Navigate to Expense Report Setup
+  - type: input
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: bv8
+      - field: Expense Report Nos.
+    value: EXP
+    description: Input <value>EXP</value> into <caption>Expense Report Nos.</caption>
+  - type: close-page
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: bv8
+    description: Close page <caption>Expense Report Setup</caption>
+  - type: navigate
+    target:
+      - page: BSEX Expense Reports
+    description: Navigate to Expense Reports
+  - type: page-shown
+    source:
+      page: BSEX Expense Reports
+    modal: false
+    runtimeId: bwg
+    description: Page <caption>Expense Reports</caption> was shown.
+  - type: invoke
+    target:
+      - page: BSEX Expense Reports
+        runtimeRef: bwg
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>New</caption>
+  - type: page-shown
+    source:
+      page: BSEX Expense Report
+    modal: false
+    runtimeId: bz9
+    description: Page <caption>New - Expense Report</caption> was shown.
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - field: Employee No.
+    value: JO
+    description: Input <value>JO</value> into <caption>Employee No.</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Expense Date
+    value: t
+    description: Input <value>t</value> into <caption>Expense Date</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Category
+    value: 1
+    description: Input <value>1</value> into <caption>Category</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Amount
+    value: "100"
+    description: Input <value>100</value> into <caption>Amount</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - field: Description
+    value: Travel Expense
+    description: Input <value>Travel Expense</value> into <caption>Description</caption>
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - action: Submit
+    description: Invoke <caption>Submit</caption>
+  - type: invoke
+    target:
+      - page: null
+        automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+        caption: Confirm
+        runtimeRef: b134
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: validate
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bz9
+      - field: Total Amount
+    value: 100
+    description: Validate <caption>Total Amount</caption> <operation>is</operation>
+      <value>100.00</value>
+    operation: =
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: b13q
+      - action: Reopen
+    description: Invoke <caption>Reopen</caption>
+  - type: invoke
+    target:
+      - page: null
+        automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+        caption: Confirm
+        runtimeRef: b16y
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: b13q
+      - action: Control_Delete
+    invokeType: Delete
+    description: Invoke Delete on <caption>Delete</caption>
+  - type: invoke
+    target:
+      - page: null
+        automationId: 00000000-0000-0000-0400-0000836bd2d2
+        caption: Confirm
+        runtimeRef: b174
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: close-page
+    target:
+      - page: BSEX Expense Reports
+        runtimeRef: bwg
+    description: Close page <caption>Expense Reports</caption>
+  - type: navigate
+    target:
+      - page: BSEX Expense Report Setup
+    description: Navigate to Expense Report Setup
+  - type: input
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: b17n
+      - field: Expense Report Nos.
+    value: ""
+    description: Input <value></value> into <caption>Expense Report Nos.</caption>
+  - type: close-page
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: b17n
+    description: Close page <caption>Expense Report Setup</caption>
+  - type: navigate
+    target:
+      - page: No. Series
+    description: Navigate to No. Series
+  - type: input
+    target:
+      - page: No. Series
+        runtimeRef: b18d
+      - scope: filter
+        field: filter:system:search
+    isFilterAsYouType: true
+    description: Input <value>exp</value> into <caption>Search</caption>
+    value: exp
+  - type: invoke
+    target:
+      - page: No. Series
+        runtimeRef: b18d
+      - repeater: Control1
+    invokeType: Delete
+    description: Invoke Delete on <caption>Control1</caption>
+  - type: invoke
+    target:
+      - page: null
+        automationId: 00000000-0000-0000-0400-0000836bd2d2
+        caption: Confirm
+        runtimeRef: b1cn
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: close-page
+    target:
+      - page: No. Series
+        runtimeRef: b18d
+    description: Close page <caption>No. Series</caption>

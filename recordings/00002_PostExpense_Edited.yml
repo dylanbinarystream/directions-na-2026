@@ -1,0 +1,513 @@
+name: Recording
+description: Test recording
+telemetryId: ab2aa444-b44c-435f-ac44-f82177b8150e
+start:
+  profile: BUSINESS MANAGER
+steps:
+  - type: navigate
+    target:
+      - page: No. Series
+    description: Navigate to No. Series
+  - type: page-shown
+    source:
+      page: No. Series
+    modal: false
+    runtimeId: b92
+    description: Page <caption>No. Series</caption> was shown.
+  - type: invoke
+    target:
+      - page: No. Series
+        runtimeRef: b92
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>New</caption>
+  - type: input
+    target:
+      - page: No. Series
+        runtimeRef: b92
+      - repeater: Control1
+      - field: Code
+    value: EXP
+    description: Input <value>EXP</value> into <caption>Code</caption>
+  - type: input
+    target:
+      - page: No. Series
+        runtimeRef: b92
+      - repeater: Control1
+      - field: Description
+    value: Expense Reports
+    description: Input <value>Expense Reports</value> into <caption>Description</caption>
+  - type: invoke
+    target:
+      - page: No. Series
+        runtimeRef: b92
+      - repeater: Control1
+      - field: StartNo
+    invokeType: DrillDown
+    description: Invoke DrillDown on <caption>Starting No.</caption>
+  - type: page-shown
+    source:
+      page: No. Series Lines
+    modal: true
+    runtimeId: bde
+    description: Page <caption>No. Series Lines</caption> was shown.
+  - type: input
+    target:
+      - page: No. Series Lines
+        runtimeRef: bde
+      - repeater: Control1
+      - field: Starting No.
+    value: EXP000001
+    description: Input <value>EXP000001</value> into <caption>Starting No.</caption>
+  - type: invoke
+    target:
+      - page: No. Series Lines
+        runtimeRef: bde
+    invokeType: Cancel
+    description: Invoke Cancel on <caption>No. Series Lines</caption>
+  - type: page-closed
+    source:
+      page: No. Series Lines
+    runtimeId: bde
+    description: Page <caption>No. Series Lines</caption> was closed.
+  - type: close-page
+    target:
+      - page: No. Series
+        runtimeRef: b92
+    description: Close page <caption>New - No. Series</caption>
+  - type: page-closed
+    source:
+      page: No. Series
+    runtimeId: b92
+    description: Page <caption>New - No. Series</caption> was closed.
+  - type: navigate
+    target:
+      - page: BSEX Expense Report Setup
+    description: Navigate to Expense Report Setup
+  - type: page-shown
+    source:
+      page: BSEX Expense Report Setup
+    modal: false
+    runtimeId: bmk
+    description: Page <caption>Expense Report Setup</caption> was shown.
+  - type: input
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: bmk
+      - field: Expense Report Nos.
+    value: EXP
+    description: Input <value>EXP</value> into <caption>Expense Report Nos.</caption>
+  - type: close-page
+    target:
+      - page: BSEX Expense Report Setup
+        runtimeRef: bmk
+    description: Close page <caption>Expense Report Setup</caption>
+  - type: page-closed
+    source:
+      page: BSEX Expense Report Setup
+    runtimeId: bmk
+    description: Page <caption>Expense Report Setup</caption> was closed.
+  - type: navigate
+    target:
+      - page: BSEX Expense Reports
+    description: Navigate to Expense Reports
+  - type: page-shown
+    source:
+      page: BSEX Expense Reports
+    modal: false
+    runtimeId: bns
+    description: Page <caption>Expense Reports</caption> was shown.
+  - type: invoke
+    target:
+      - page: BSEX Expense Reports
+        runtimeRef: bns
+      - action: Control_New
+    invokeType: New
+    description: Invoke New on <caption>New</caption>
+  - type: page-shown
+    source:
+      page: BSEX Expense Report
+    modal: false
+    runtimeId: bql
+    description: Page <caption>New - Expense Report</caption> was shown.
+  - type: focus
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: No.
+    description: Focus <caption>No.</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Description
+    value: Directions NA 2026
+    description: Input <value>Directions NA 2026</value> into <caption>Description</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Employee No.
+    value: JO
+    description: Input <value>JO</value> into <caption>Employee No.</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Posting Date
+    value: 04/26/2026
+    description: Input <value>04/26/2026</value> into <caption>Posting Date</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Document Date
+    value: 04/26/2026
+    description: Input <value>04/26/2026</value> into <caption>Document Date</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Purpose
+    value: Business Conference
+    description: Input <value>Business Conference</value> into <caption>Business
+      Purpose</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Expense Date
+    value: 04/26/2026
+    description: Input <value>04/26/2026</value> into <caption>Expense Date</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Category
+    value: 2
+    description: Input <value>2</value> into <caption>Category</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Description
+    value: Hotel Breakfast
+    description: Input <value>Hotel Breakfast</value> into <caption>Description</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Merchant
+    value: Hyatt Regency Orlando
+    description: Input <value>Hyatt Regency Orlando</value> into <caption>Merchant</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Amount
+    value: "36"
+    description: Input <value>36</value> into <caption>Amount</caption>
+  - type: set-current-row
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+    targetRecord:
+      relative: 1
+    description: Set current row in <caption>Group</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Expense Date
+    value: 04/25/2026
+    description: Input <value>04/25/2026</value> into <caption>Expense Date</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Category
+    value: 4
+    description: Input <value>4</value> into <caption>Category</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Description
+    value: Power Adapter
+    description: Input <value>Power Adapter</value> into <caption>Description</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Merchant
+    value: Airport Electronics
+    description: Input <value>Airport Electronics</value> into <caption>Merchant</caption>
+  - type: input
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - part: Lines
+      - page: BSEX Expense Report Subform
+      - repeater: Group
+      - field: Amount
+    value: "30"
+    description: Input <value>30</value> into <caption>Amount</caption>
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - action: Submit
+    parameters: {}
+    description: Invoke <caption>Submit</caption>
+  - type: page-shown
+    source:
+      page: null
+      automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+      caption: Confirm
+    modal: true
+    runtimeId: bth
+    description: Page <caption>Confirm</caption> was shown.
+  - type: invoke
+    target:
+      - page: null
+        automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+        caption: Confirm
+        runtimeRef: bth
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: page-closed
+    source:
+      page: null
+    runtimeId: bth
+    description: Page <caption>Confirm</caption> was closed.
+  - type: validate
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Total Amount
+    operation: =
+    value: 66
+    description: Validate <caption>Total Amount</caption> <operation>is</operation>
+      <value>66.00</value>
+  - type: validate
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Line Count
+    operation: =
+    value: 2
+    description: Validate <caption>Line Count</caption> <operation>is</operation>
+      <value>2</value>
+  - type: validate
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Status
+    operation: =
+    value: 1
+    description: Validate <caption>Status</caption> <operation>is</operation>
+      <value>Submitted</value>
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - action: Approve
+    parameters: {}
+    description: Invoke <caption>Approve</caption>
+  - type: page-shown
+    source:
+      page: null
+      automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+      caption: Confirm
+    modal: true
+    runtimeId: btn
+    description: Page <caption>Confirm</caption> was shown.
+  - type: invoke
+    target:
+      - page: null
+        automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+        caption: Confirm
+        runtimeRef: btn
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: page-closed
+    source:
+      page: null
+    runtimeId: btn
+    description: Page <caption>Confirm</caption> was closed.
+  - type: validate
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - field: Status
+    operation: =
+    value: 2
+    description: Validate <caption>Status</caption> <operation>is</operation>
+      <value>Approved</value>
+  - type: invoke
+    target:
+      - page: BSEX Expense Report
+        runtimeRef: bql
+      - action: Post
+    parameters: {}
+    description: Invoke <caption>Post</caption>
+  - type: page-shown
+    source:
+      page: null
+      automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+      caption: Confirm
+    modal: true
+    runtimeId: btt
+    description: Page <caption>Confirm</caption> was shown.
+  - type: invoke
+    target:
+      - page: null
+        automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+        caption: Confirm
+        runtimeRef: btt
+    invokeType: Yes
+    description: Invoke Yes on <caption>Confirm</caption>
+  - type: page-closed
+    source:
+      page: null
+    runtimeId: btt
+    description: Page <caption>Confirm</caption> was closed.
+  - type: page-closed
+    source:
+      page: BSEX Expense Report
+    runtimeId: bql
+    description: Page <caption>Expense Report</caption> was closed.
+  - type: message
+    automationId: 8da61efd-0002-0003-0507-0b0d1113171d
+    text: Expense report EXP000001 was posted. 2 ledger entries were created.
+    description: "Message: <value>Expense report EXP000001 was posted. 2 ledger
+      entries were created.</value>"
+  - type: close-page
+    target:
+      - page: BSEX Expense Reports
+        runtimeRef: bns
+    description: Close page <caption>Expense Reports</caption>
+  - type: page-closed
+    source:
+      page: BSEX Expense Reports
+    runtimeId: bns
+    description: Page <caption>Expense Reports</caption> was closed.
+  - type: navigate
+    target:
+      - page: BSEX Posted Expense Reports
+    description: Navigate to Posted Expense Reports
+  - type: page-shown
+    source:
+      page: BSEX Posted Expense Reports
+    modal: false
+    runtimeId: buh
+    description: Page <caption>Posted Expense Reports</caption> was shown.
+  - type: validate
+    target:
+      - page: BSEX Posted Expense Reports
+        runtimeRef: buh
+      - repeater: Group
+    operation: =
+    value: 1
+    description: Validate <caption>Group</caption> row
+      count  <operation>is</operation> <value>1</value>
+  - type: invoke
+    target:
+      - page: BSEX Posted Expense Reports
+        runtimeRef: buh
+      - action: LedgerEntries
+    parameters: {}
+    description: Invoke <caption>Ledger Entries</caption>
+  - type: page-shown
+    source:
+      page: BSEX Expense Ledger Entries
+    modal: false
+    runtimeId: bx5
+    description: Page <caption>Expense Ledger Entries</caption> was shown.
+  - type: validate
+    target:
+      - page: BSEX Expense Ledger Entries
+        runtimeRef: bx5
+      - repeater: Group
+    operation: =
+    value: 2
+    description: Validate <caption>Group</caption> row
+      count  <operation>is</operation> <value>2</value>
+  - type: validate
+    target:
+      - page: BSEX Expense Ledger Entries
+        runtimeRef: bx5
+      - repeater: Group
+      - field: Amount
+    operation: =
+    value: 30
+    description: Validate <caption>Amount</caption> <operation>is</operation>
+      <value>30.00</value>
+  - type: set-current-row
+    target:
+      - page: BSEX Expense Ledger Entries
+        runtimeRef: bx5
+      - repeater: Group
+    targetRecord:
+      relative: 1
+    description: Set current row in <caption>Group</caption>
+  - type: validate
+    target:
+      - page: BSEX Expense Ledger Entries
+        runtimeRef: bx5
+      - repeater: Group
+      - field: Amount
+    operation: =
+    value: 36
+    description: Validate <caption>Amount</caption> <operation>is</operation>
+      <value>36.00</value>
+  - type: close-page
+    target:
+      - page: BSEX Expense Ledger Entries
+        runtimeRef: bx5
+    description: Close page <caption>Expense Ledger Entries</caption>
+  - type: page-closed
+    source:
+      page: BSEX Expense Ledger Entries
+    runtimeId: bx5
+    description: Page <caption>Expense Ledger Entries</caption> was closed.
+  - type: close-page
+    target:
+      - page: BSEX Posted Expense Reports
+        runtimeRef: buh
+    description: Close page <caption>Posted Expense Reports</caption>
+  - type: page-closed
+    source:
+      page: BSEX Posted Expense Reports
+    runtimeId: buh
+    description: Page <caption>Posted Expense Reports</caption> was closed.
