@@ -19,9 +19,22 @@ page 77503 "BSEX Expense Report Subform"
                 field(Category; Rec.Category) { ApplicationArea = All; }
                 field(Description; Rec.Description) { ApplicationArea = All; }
                 field(Merchant; Rec.Merchant) { ApplicationArea = All; }
-                field(Amount; Rec.Amount) { ApplicationArea = All; }
+                field(Amount; Rec.Amount)
+                {
+                    ApplicationArea = All;
+                    trigger OnValidate()
+                    begin
+                        CurrPage.Update(true);
+                    end;
+                }
                 field(Reimbursable; Rec.Reimbursable) { ApplicationArea = All; }
             }
         }
     }
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        CurrPage.Update(true);
+        exit(true);
+    end;
 }

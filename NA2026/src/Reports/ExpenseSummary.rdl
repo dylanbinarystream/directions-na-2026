@@ -523,22 +523,6 @@
                       <Value>=Fields!Category.Value</Value>
                     </SortExpression>
                   </SortExpressions>
-                  <TablixHeader>
-                    <Size>0in</Size>
-                    <CellContents>
-                      <Textbox Name="GroupHeader">
-                        <Paragraphs>
-                          <Paragraph>
-                            <TextRuns>
-                              <TextRun>
-                                <Value></Value>
-                              </TextRun>
-                            </TextRuns>
-                          </Paragraph>
-                        </Paragraphs>
-                      </Textbox>
-                    </CellContents>
-                  </TablixHeader>
                   <TablixMembers>
                     <TablixMember>
                       <KeepWithGroup>After</KeepWithGroup>

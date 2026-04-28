@@ -8,7 +8,7 @@ page 77501 "BSEX Posted Expense Reports"
     UsageCategory = History;
     SourceTable = "BSEX Expense Report Header";
     SourceTableView = where(Status = const(Posted));
-    CardPageId = "BSEX Expense Report";
+    CardPageId = "BSEX Posted Expense Report";
     Editable = false;
 
     layout

@@ -17,6 +17,7 @@ permissionset 77550 "BSEX-EXP-EDIT"
         page "BSEX Expense Reports" = X,
         page "BSEX Posted Expense Reports" = X,
         page "BSEX Expense Report" = X,
+        page "BSEX Posted Expense Report" = X,
         page "BSEX Expense Report Subform" = X,
         page "BSEX Expense Ledger Entries" = X,
         page "BSEX Expense Report Setup" = X,
