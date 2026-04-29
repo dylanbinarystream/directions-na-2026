@@ -112,7 +112,7 @@ steps:
       - page: BSEX Expense Report Subform
       - repeater: Group
       - field: Expense Date
-    value: t
+    value: 02/01/2026
     description: Input <value>t</value> into <caption>Expense Date</caption>
   - type: input
     target:

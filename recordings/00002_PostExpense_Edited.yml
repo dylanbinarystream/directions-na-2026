@@ -162,7 +162,7 @@ steps:
       - page: BSEX Expense Report
         runtimeRef: bql
       - field: Document Date
-    value: 04/26/2026
+    value: 02/01/2026
     description: Input <value>04/26/2026</value> into <caption>Document Date</caption>
   - type: input
     target:
@@ -180,7 +180,7 @@ steps:
       - page: BSEX Expense Report Subform
       - repeater: Group
       - field: Expense Date
-    value: 04/26/2026
+    value: 02/01/2026
     description: Input <value>04/26/2026</value> into <caption>Expense Date</caption>
   - type: input
     target:
@@ -240,7 +240,7 @@ steps:
       - page: BSEX Expense Report Subform
       - repeater: Group
       - field: Expense Date
-    value: 04/25/2026
+    value: 02/01/2026
     description: Input <value>04/25/2026</value> into <caption>Expense Date</caption>
   - type: input
     target:

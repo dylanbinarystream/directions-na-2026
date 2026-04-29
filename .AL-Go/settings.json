@@ -3,6 +3,11 @@
   "country": "us",
   "appFolders": ["NA2026"],
   "testFolders": ["NA2026.Test"],
-  "pageScriptingTests": ["recordings"],
+  "pageScriptingTests": [
+    "recordings/00001_SubmitExpense.yml",
+    "recordings/00001_SubmitExpense_Edited.yml",
+    "recordings/00002_PostExpense.yml",
+    "recordings/00002_PostExpense_Edited.yml"
+  ],
   "restoreDatabases": ["BeforeEachPageScriptingTest"]
 }
